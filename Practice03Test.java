@@ -53,13 +53,40 @@ public class Practice03Test {
 
 
 	public int find_min_iterative () {
-		// TODO: Fill in this iterative function.
+		double min = arr[0];
+		int minIndex = 0;
+		for(int a = 1; a <arr.length; a++){
+			if(min> arr[a]){
+				min = arr[a];
+				minIndex = a;
+			}
+			else{
+				minIndex = minIndex;
+			}
+
+		}	
+		return minIndex;
 	}
 
 
-	public int find_min_recursive () {
+	public int find_min_recursive (int index, double min, int count) {
 		// TODO: Fill in this recursive function.
-	}
+		int minindex = 0;
+		if(index <= (arr.length - 1)){
+        	if(arr[index] < min){
+            	min = arr[index];
+       	 }
+       	return find_min_recursive(index + 1, min, count +1);
+    }
+   
+    for (int i = 0; i < arr.length; i++){
+		if (arr[i] == min){
+			 minindex = i;
+		}
+    }
+   return minindex;
+}
+		
 
 
 	/**
@@ -68,7 +95,7 @@ public class Practice03Test {
 	 */
 	public void print_min() {
 		System.out.println("Iteratively determined min at index " + find_min_iterative());
-		System.out.println("Recursively determined min at index " + find_min_recursive());
+		System.out.println("Recursively determined min at index " + find_min_recursive(0,arr[0],0));
 	}
 
 
